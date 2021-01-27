@@ -43,6 +43,7 @@ public class WarehousesController {
     public Warehouses updateWarehouses(@PathVariable long id,
                                   @RequestBody Warehouses unsafeWarehouses) {
         Warehouses warehouse =warehousesService.get(id);
+        warehouse.setName(unsafeWarehouses.getName());
         return warehousesService.update(unsafeWarehouses);
     }
     @GetMapping("{id}")

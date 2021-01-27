@@ -38,6 +38,7 @@ public class ProvidersController {
     public Providers updateProvider(@PathVariable long id,
                                   @RequestBody Providers unsafeProviders) {
        Providers providers = providersService.get(id);
+       providers.setName(unsafeProviders.getName());
         return providersService.update(unsafeProviders);
     }
     @GetMapping("{id}")

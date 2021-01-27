@@ -35,6 +35,7 @@ public class TransporterTypesController {
     public TransporterTypes updateCustomer(@PathVariable long id,
                                           @RequestBody TransporterTypes unsafeTranporterType) {
         TransporterTypes transporterTypes = transporterTypesService.get(id);
+        transporterTypes.setType(unsafeTranporterType.getType());
         return transporterTypesService.update(unsafeTranporterType);
     }
     @GetMapping("{id}")

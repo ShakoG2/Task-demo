@@ -30,24 +30,27 @@ public class ProductController {
     @PostMapping
     @Transactional
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
-
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.add(product));
     }
 
     @PutMapping("{id}")
-    public Product updateCustomer(@PathVariable long id,
+    public Product updateProduct(@PathVariable long id,
                                    @RequestBody Product unsaProduct) {
         Product product = productService.get(id);
+        product.setPrice(unsaProduct.getPrice());
+        product.setQuantity(unsaProduct.getQuantity());
+        product.setWarehouses(unsaProduct.getWarehouses());
+        product.setProviders(unsaProduct.getProviders());
         return productService.update(unsaProduct);
     }
     @GetMapping("{id}")
-    public Product getCustomer(@PathVariable long id) {
+    public Product getProduct(@PathVariable long id) {
         return productService.get(id);
     }
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable long id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }

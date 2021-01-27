@@ -37,6 +37,8 @@ public class TransporterCarsController {
     public TransporterCars updateCustomer(@PathVariable long id,
                                   @RequestBody TransporterCars unsafeCars) {
         TransporterCars transporterCars = transporterCarsService.get(id);
+        transporterCars.setCarModel(unsafeCars.getCarModel());
+        transporterCars.setCarMark(unsafeCars.getCarMark());
         return transporterCarsService.update(unsafeCars);
     }
     @GetMapping("{id}")
