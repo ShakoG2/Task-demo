@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @Entity
@@ -28,5 +29,5 @@ public class TransporterCars {
 
 
     @Column(name="transporter_car_date_ofissue",nullable = false,columnDefinition = "text")
-    private String dateOfIssue;
+    private Date dateOfIssue;
 }

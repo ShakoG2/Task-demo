@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="transporter_drivers_table")
+@Table(name="transporters_drivers_table")
 public class Drivers {
     @Id
     @GeneratedValue
@@ -22,9 +22,6 @@ public class Drivers {
 
     @Column(name="driver_lastname",nullable = false,columnDefinition = "text")
     private String lastName;
-
-    @Column(name="driver_name",nullable = false,columnDefinition = "text")
-    private String name;
 
     @Column(name="driver_birthDate",nullable = false,columnDefinition = "text")
     private String birthDate;

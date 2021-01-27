@@ -1,7 +1,7 @@
 
 Ext.define("SL.view.MainViewModel",{
     extend:"Ext.app.ViewModel",
-    requires:["SL.model.Products","SL.model.Providers","SL.model.Warehouses","SL.model.TransporterCarsModel","SL.model.TransporterCarsType"],
+    requires:["SL.model.Products","SL.model.Providers","SL.model.Warehouses","SL.model.TransporterCarsModel","SL.model.TransporterCarsType","SL.model.Drivers"],
 
 
     stores:{
@@ -27,6 +27,11 @@ Ext.define("SL.view.MainViewModel",{
         },
         transporterCarsTypes:{
             model:"SL.model.TransporterCarsType",
+            autoLoad:true,
+            autoSync:true,
+        },
+        drivers:{
+            model:"SL.model.Drivers",
             autoLoad:true,
             autoSync:true,
         },

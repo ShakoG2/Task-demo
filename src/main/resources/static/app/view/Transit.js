@@ -102,7 +102,7 @@ Ext.define("SL.view.Transit",{
                     regex: /^[a-zA-Zა-ჰ]+$/,
                     width:200,
                 },{
-                    xtype: "numberfield",
+                    xtype: "textfield",
                     name:"number",
                     fieldLabel: "Number",
                     width:200,
@@ -176,9 +176,9 @@ Ext.define("SL.view.Transit",{
                 }]
         },{
             xtype:"grid",
-            // bind:{
-            //     store:"{warehouses}"
-            // },
+            bind:{
+                store:"{drivers}"
+            },
             tbar:[{
                 xtype:"form",
                 layout:"hbox",
@@ -192,16 +192,16 @@ Ext.define("SL.view.Transit",{
                     allowBlank: false,
                 },
                 items:[{
-                    xtype: "numberfield",
+                    xtype: "textfield",
                     name:"privateNumber",
                     fieldLabel:"PrivateNumber",
-                    regex: /^[a-zA-Zა-ჰ]+$/,
+                    regex: /^[0-9]{11}$/,
                     width:200,
                 },{
                     xtype: "textfield",
                     name:"firstName",
                     fieldLabel: "FirstName",
-                    regex: /^[0-9]{11}$/,
+                    regex: /^[a-zA-Zა-ჰ]+$/,
                     width:200,
                },{
                     xtype: "textfield",
@@ -209,12 +209,18 @@ Ext.define("SL.view.Transit",{
                     name:"lastName",
                     regex: /^[a-zA-Zა-ჰ]+$/,
                     width:200,
-            },{
+               },{
                     xtype: "datefield",
                     name:"birthDate",
                     fieldLabel: "BirthDate",
                     width:200,
-            },{
+               },{
+                    xtype: 'checkbox',
+                    name: 'active',
+                    reference: 'activeField',
+                    boxLabel: 'მძღოლის აქტივობა',
+                    margin:"70 0 0 50",
+                },{
                     xtype: "button",
                     text:"დამატება",
                     scale:"medium",
@@ -223,7 +229,7 @@ Ext.define("SL.view.Transit",{
                     width:150,
                 },{
                     xtype: "button",
-                    text:"გასუფტავება",
+                    text:"გასუთავება",
                     scale:"medium",
                     margin:"70 0 0 50",
                     handler:"resetDrivers",
@@ -244,7 +250,7 @@ Ext.define("SL.view.Transit",{
             },{
                 text:"Name",
                 width:150,
-                dataIndex:"name",
+                dataIndex:"firstName",
                 flex:3,
             },{
 
@@ -258,6 +264,12 @@ Ext.define("SL.view.Transit",{
                 dataIndex:"birthDate",
                 flex:3,
            },{
+                text:"booleancolumn",
+                width:150,
+                dataIndex:"active",
+                trueText: '<i class="fa fa-check"></i>',
+                flex:3,
+            },{
                 xtype: 'actioncolumn',
                 flex:1,
                 items: [{

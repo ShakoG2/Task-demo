@@ -44,4 +44,14 @@ Ext.define('SL.view.TransitController',{
             }
         }, this)
     },
+    addDrivers:function (){
+        const me=this;
+        const form=me.lookup("driversForm");
+        if(!form.isValid()) return;
+        const values=form.getForm().getValues();
+        const store=me.getViewModel().getStore("drivers");
+        const driver=Ext.create("SL.model.Drivers",values);
+        store.add(driver);
+        form.reset();
+    }
 })
