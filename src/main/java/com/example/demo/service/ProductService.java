@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Product;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ProductService {
     Product update(Product product);
 
     void delete (long id);
+
+//    Page<Product> search(ProductSearchParams searchParams);
 }

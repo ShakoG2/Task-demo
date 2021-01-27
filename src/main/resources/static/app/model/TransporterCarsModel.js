@@ -1,13 +1,12 @@
-Ext.define("SL.model.Providers",{
+Ext.define("SL.model.TransporterCarsModel",{
     extend:"Ext.data.Model",
     identifier: {
         type: 'sequential',
         id: 'foo'
     },
-    fields: ['id','name'],
-
+    fields:["id","type","carMark","carModel","dateOfIssue"],
     proxy: {
-        url: '/providers',
+        url: '/transporterCars',
         type: 'rest',
         writer: {
             writeRecordId: false,

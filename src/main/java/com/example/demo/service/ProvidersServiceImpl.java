@@ -24,12 +24,13 @@ public class ProvidersServiceImpl implements ProvidersService {
 
     @Override
     public Providers get(long id){
-        String msg = String.format("Customer with id: %d Not Found", id);
+        String msg = String.format("Provider with id: %d Not Found", id);
         return providersRepository.findById(id).orElseThrow(() -> new NotFoundException(msg));
     }
 
     @Override
     public Providers add(Providers providers){
+        providers.setId(null);
         return providersRepository.save(providers);
     }
 

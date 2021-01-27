@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
-import lombok.RequiredArgsConstructor;
-
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +30,7 @@ public class ProductController {
     @PostMapping
     @Transactional
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
+
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.add(product));
     }
 

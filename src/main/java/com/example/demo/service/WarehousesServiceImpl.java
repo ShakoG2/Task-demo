@@ -25,12 +25,13 @@ public  class WarehousesServiceImpl implements WarehousesService{
 
     @Override
     public Warehouses get(long id){
-        String msg = String.format("warehouses with id: %d Not Found", id);
+        String msg = String.format("Warehouses with id: %d Not Found", id);
         return warehousesRepository.findById(id).orElseThrow(() -> new NotFoundException(msg));
     }
 
     @Override
     public Warehouses add(Warehouses warehouses){
+        warehouses.setId(null);
        return warehousesRepository.save(warehouses);
     }
 

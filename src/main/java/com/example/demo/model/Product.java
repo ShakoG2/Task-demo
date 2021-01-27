@@ -1,31 +1,26 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldNameConstants;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
 
 
 @Data
 @Entity
-@Table(name="products")
+@Table(name="products_table")
 @FieldNameConstants
 @NoArgsConstructor
 public class Product {
 
     @Id
-    @SequenceGenerator(name = "CustomerIdGen", sequenceName = "customers_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CustomerIdGen")
+//    @SequenceGenerator(name = "CustomerIdGen", sequenceName = "customers_seq", allocationSize = 1)
+    @GeneratedValue
     private Long id;
-
-
-    @Column(name="provider_name",nullable = false,columnDefinition ="text")
-    private String name;
 
 
     @Column(name="warehouses_name",nullable = false,columnDefinition = "text")
@@ -47,11 +42,11 @@ public class Product {
     @Column(name="retail_price",nullable = false)
     private BigDecimal retailPrice;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
-    @Column(name = "create_date")
-    private Date createDate;
-
     @ManyToOne(fetch = FetchType.LAZY)
     public Providers providers;
+
+//    @JsonManagedReference("product-warehouses")
+//    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+//    private List<Warehouses> warehousesAll;
 
 }

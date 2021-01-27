@@ -1,8 +1,12 @@
-Ext.define("SL.view.Warehouses",{
+Ext.define("SL.model.Warehouses",{
     extend:"Ext.data.Model",
-    fields: ['id', 'name', ''],
+    identifier: {
+        type: 'sequential',
+        id: 'foo'
+    },
+    fields: ['id', 'name',],
     proxy: {
-        url: '',
+        url: '/warehouses',
         type: 'rest',
         writer: {
             writeRecordId: false,
